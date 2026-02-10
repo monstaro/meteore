@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+}
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20vh 0 15vh;
+}
+
+.fractured-title {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 420;
+  display: flex;
+  gap: 28px;
+  opacity: 89%;
+  filter: url(#pixelate);
+}
+
+.flicker-wrapper {
+  animation: flicker 0.5s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  18% {
+    opacity: 1;
+  }
+  19% {
+    opacity: 0.4;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  41% {
+    opacity: 0.6;
+  }
+  42% {
+    opacity: 1;
+  }
+  43% {
+    opacity: 0.3;
+  }
+  44% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  79% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 1;
+  }
+  81% {
+    opacity: 0.7;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.letter-0 {
+  transform: translateX(-8px) translateY(4px);
+  margin-right: 42px;
+}
+.letter-1 {
+  transform: translateX(14px) translateY(-8px);
+  margin-right: -6px;
+}
+.letter-2 {
+  transform: translateX(-5px) translateY(38px);
+  margin-right: 18px;
+}
+.letter-3 {
+  transform: translateX(20px) translateY(22px);
+  margin-right: 55px;
+}
+.letter-4 {
+  transform: translateX(-12px) translateY(28px);
+  margin-right: -10px;
+}
+.letter-5 {
+  transform: translateX(7px) translateY(-32px);
+  margin-right: 8px;
+}
+.letter-6 {
+  transform: translateX(8px) translateY(-28px);
+  margin-right: 47px;
+}
+.letter-7 {
+  transform: translateX(10px) translateY(-18px);
+  margin-right: -4px;
+}
+.letter-8 {
+  transform: translateX(-6px) translateY(12px);
+  margin-right: 36px;
+}
+.letter-9 {
+  transform: translateX(16px) translateY(34px);
+  margin-right: -8px;
+}
+.letter-10 {
+  transform: translateX(9px) translateY(30px);
+  margin-right: 22px;
+}
+.letter-11 {
+  transform: translateX(12px) translateY(-14px);
+  margin-right: 0;
+}
+
+.meteore-wrapper {
+  animation: flicker 3.2s infinite;
+}
+
+.meteore {
+  display: flex;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 420;
+  filter: url(#pixelate2);
+  font-size: 1.2rem;
+  letter-spacing: 40px;
+}
+
+.transmission-text {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 2;
+  max-width: 500px;
+}
