@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Transmission from "./pages/transmission";
+import Transmission from "./pages/Transmission";
 import "./App.css";
 import shortwave from "./assets/shortwave.mp3";
 import { useEffect, useRef } from "react";
