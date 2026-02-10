@@ -221,7 +221,7 @@
 
 @media (max-width: 430px) {
   .fractured-title {
-    font-size: 0.55rem;
+    font-size: 1.1rem;
     gap: 2px;
     transform: scale(0.9);
     transform-origin: center;
