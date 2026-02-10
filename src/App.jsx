@@ -12,9 +12,14 @@ export default function App() {
     const play = () => {
       audioRef.current?.play();
       window.removeEventListener("click", play);
+      window.removeEventListener("touchstart", play);
     };
     window.addEventListener("click", play);
-    return () => window.removeEventListener("click", play);
+    window.addEventListener("touchstart", play); // needed for mobile
+    return () => {
+      window.removeEventListener("click", play);
+      window.removeEventListener("touchstart", play);
+    };
   }, []);
   useEffect(() => {
     if (!audioRef.current) return;

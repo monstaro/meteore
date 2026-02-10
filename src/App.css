@@ -150,3 +150,64 @@
   line-height: 2;
   max-width: 500px;
 }
+
+@media (max-width: 768px) {
+  .fractured-title {
+    font-size: 0.75rem;
+    gap: 8px;
+  }
+
+  .letter-0 {
+    transform: translateX(-3px) translateY(3px);
+    margin-right: 12px;
+  }
+  .letter-1 {
+    transform: translateX(4px) translateY(-5px);
+    margin-right: -2px;
+  }
+  .letter-2 {
+    transform: translateX(-2px) translateY(10px);
+    margin-right: 6px;
+  }
+  .letter-3 {
+    transform: translateX(5px) translateY(7px);
+    margin-right: 16px;
+  }
+  .letter-4 {
+    transform: translateX(-3px) translateY(8px);
+    margin-right: -3px;
+  }
+  .letter-5 {
+    transform: translateX(2px) translateY(-10px);
+    margin-right: 4px;
+  }
+  .letter-6 {
+    transform: translateX(3px) translateY(-8px);
+    margin-right: 14px;
+  }
+  .letter-7 {
+    transform: translateX(3px) translateY(-6px);
+    margin-right: -2px;
+  }
+  .letter-8 {
+    transform: translateX(-2px) translateY(4px);
+    margin-right: 10px;
+  }
+  .letter-9 {
+    transform: translateX(4px) translateY(10px);
+    margin-right: -3px;
+  }
+  .letter-10 {
+    transform: translateX(3px) translateY(9px);
+    margin-right: 7px;
+  }
+  .letter-11 {
+    transform: translateX(3px) translateY(-5px);
+    margin-right: 0;
+  }
+
+  .meteore {
+    font-size: 0.75rem;
+    letter-spacing: 12px;
+  }
+}
