@@ -14,7 +14,11 @@ export default function FracturedMeteore() {
       <h2 className="meteore">
         <Link
           to="/transmission"
-          style={{ color: "inherit", textDecoration: "none" }}
+          style={{
+            color: "inherit",
+            textDecoration: "none",
+            transform: "rotate(-10deg)",
+          }}
         >
           m
         </Link>

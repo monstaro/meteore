@@ -154,55 +154,55 @@
 @media (max-width: 768px) {
   .fractured-title {
     font-size: 0.95rem;
-    gap: 9px;
+    gap: 20px;
   }
 
   .letter-0 {
-    transform: translateX(0px) translateY(2px);
-    margin-right: 8px;
+    transform: translateY(12px);
+    margin-right: 18px;
   }
   .letter-1 {
-    transform: translateX(0px) translateY(-4px);
+    transform: translateY(-9px);
     margin-right: -1px;
   }
   .letter-2 {
-    transform: translateX(0px) translateY(7px);
-    margin-right: 4px;
-  }
-  .letter-3 {
-    transform: translateX(0px) translateY(5px);
-    margin-right: 10px;
-  }
-  .letter-4 {
-    transform: translateX(0px) translateY(6px);
-    margin-right: -2px;
-  }
-  .letter-5 {
-    transform: translateX(0px) translateY(-8px);
+    transform: translateY(26px);
     margin-right: 3px;
   }
+  .letter-3 {
+    transform: translateY(4px);
+    margin-right: 29px;
+  }
+  .letter-4 {
+    transform: translateY(14px);
+    margin-right: -20px;
+  }
+  .letter-5 {
+    transform: translateY(-14px);
+    margin-right: 14px;
+  }
   .letter-6 {
-    transform: translateX(0px) translateY(-6px);
-    margin-right: 10px;
+    transform: translateY(-10px);
+    margin-right: 1px;
   }
   .letter-7 {
-    transform: translateX(0px) translateY(-5px);
-    margin-right: -1px;
+    transform: translateY(36px);
+    margin-right: 19px;
   }
   .letter-8 {
-    transform: translateX(0px) translateY(3px);
-    margin-right: 8px;
+    transform: translateY(8px);
+    margin-right: 10px;
   }
   .letter-9 {
-    transform: translateX(0px) translateY(8px);
-    margin-right: -2px;
+    transform: translateY(18px);
+    margin-right: 2px;
   }
   .letter-10 {
-    transform: translateX(0px) translateY(7px);
-    margin-right: 5px;
+    transform: translateY(10px);
+    margin-right: 16px;
   }
   .letter-11 {
-    transform: translateX(0px) translateY(-4px);
+    transform: translateY(-12px);
     margin-right: 0;
   }
 
@@ -216,5 +216,14 @@
     overflow: hidden;
     padding-top: 15vh;
     background-position: center top;
+  }
+}
+
+@media (max-width: 430px) {
+  .fractured-title {
+    font-size: 0.55rem;
+    gap: 2px;
+    transform: scale(0.9);
+    transform-origin: center;
   }
 }
