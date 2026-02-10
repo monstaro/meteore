@@ -220,10 +220,14 @@
 }
 
 @media (max-width: 430px) {
+  .hero {
+    padding-top: 25vh;
+  }
+
   .fractured-title {
-    font-size: 1.1rem;
-    gap: 2px;
-    transform: scale(0.9);
-    transform-origin: center;
+    font-size: 1rem;
+    gap: 6px;
+    overflow: visible;
+    padding: 20px 0;
   }
 }
