@@ -7,12 +7,12 @@ export default function Transmission() {
       {/* <div /> */}
       <div className="flicker-wrapper transmission-text">
         <p>
-          <b>transmission 001 — feb 9 2026</b>
+          <b>entry 001 — feb 9 2026</b>
         </p>
         <p>something was received here. we are still decoding.</p>
         <br></br>
         <p>
-          <b>transmission 002 — feb 10 2026</b>
+          <b>entry 002 — feb 10 2026</b>
         </p>
         <p>
           yesterday, a non-repeating, non-terrestrial 11-minute signal was
