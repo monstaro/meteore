@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Transmission from "./pages/Transmission";
+import Transmission2 from "./pages/Transmission2";
+
 import "./App.css";
 import shortwave from "./assets/shortwave.mp3";
 import { useEffect, useRef } from "react";
@@ -46,6 +48,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/transmission" element={<Transmission />} />
+        <Route path="/transmission2" element={<Transmission2 />} />
       </Routes>
     </>
   );

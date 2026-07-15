@@ -22,8 +22,18 @@ export default function FracturedMeteore() {
         >
           m
         </Link>
+        <Link
+          to="/transmission2"
+          style={{
+            color: "inherit",
+            textDecoration: "none",
+            transform: "rotate(10deg)",
+          }}
+        >
+          e
+        </Link>
         {title
-          .slice(1)
+          .slice(2)
           .split("")
           .map((letter, i) => (
             <span key={i}>{letter}</span>

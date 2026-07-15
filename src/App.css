@@ -26,7 +26,7 @@
   font-family: "JetBrains Mono", monospace;
   font-weight: 420;
   display: flex;
-  gap: 38px;
+  gap: 58px;
   opacity: 89%;
   filter: url(#pixelate);
   overflow: visible;
@@ -145,6 +145,7 @@
   filter: url(#pixelate2);
   font-size: 1.2rem;
   letter-spacing: 40px;
+  padding-top: 20px;
 }
 
 .transmission-text {
@@ -153,8 +154,30 @@
   color: rgba(255, 255, 255, 0.9);
   line-height: 2;
   max-width: 500px;
+  max-height: 70vh;
+  overflow: auto;
+  padding-right: 10px;
 }
 
+.transmission-text::-webkit-scrollbar {
+  width: 10px;
+  background: #021f50;
+}
+
+.transmission-text::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.transmission-text::-webkit-scrollbar-thumb {
+  background: #013d3f;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.transmission-text::-webkit-scrollbar-thumb:hover {
+  background: #013d3f;
+}
 @media (max-width: 768px) {
   .fractured-title {
     font-size: 0.95rem;

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import bgImage from "../assets/background.jpeg";
 import FracturedMeteore from "../components/FracturedMeteore";
-
+import FracturedTitle from "../components/FracturedTitle";
 export default function Transmission() {
   const textRef = useRef(null);
 
@@ -20,6 +20,8 @@ export default function Transmission() {
 
   return (
     <div className="hero" style={{ backgroundImage: `url(${bgImage})` }}>
+      {/* <FracturedTitle /> */}
+
       <div className="flicker-wrapper transmission-text" ref={textRef}>
         <p>
           <b>entry 001 — feb 9 2026</b>
@@ -41,7 +43,7 @@ export default function Transmission() {
           <br />
           <br />
           the object's velocity and trajectory indicate a potential deep-impact
-          event timeframe of less than a 365 days. further communications will
+          event timeframe of less than 365 days. further communications will
           remain on this secure NASA intranet channel.
         </p>
         <br />
