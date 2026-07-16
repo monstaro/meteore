@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const title = "méteoré";
+const title = "éore";
 
 export default function FracturedMeteore() {
   return (
@@ -30,10 +30,20 @@ export default function FracturedMeteore() {
             transform: "rotate(10deg)",
           }}
         >
-          e
+          é
+        </Link>
+        <Link
+          to="/transmission3"
+          style={{
+            color: "inherit",
+            textDecoration: "none",
+            transform: "rotate(2deg)",
+          }}
+        >
+          t
         </Link>
         {title
-          .slice(2)
+          .slice(0)
           .split("")
           .map((letter, i) => (
             <span key={i}>{letter}</span>

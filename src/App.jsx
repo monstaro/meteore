@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Transmission from "./pages/Transmission";
 import Transmission2 from "./pages/Transmission2";
+import Transmission3 from "./pages/Transmission3";
 
 import "./App.css";
 import shortwave from "./assets/shortwave.mp3";
@@ -49,6 +50,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/transmission" element={<Transmission />} />
         <Route path="/transmission2" element={<Transmission2 />} />
+        <Route path="/transmission3" element={<Transmission3 />} />
       </Routes>
     </>
   );

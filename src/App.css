@@ -279,3 +279,20 @@
     background-position: right;
   }
 }
+
+.logo-link {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo-icon {
+  width: 50px;
+  height: auto;
+  transition: opacity 0.2s;
+}
+
+.logo-link:hover .logo-icon {
+  opacity: 1;
+}
