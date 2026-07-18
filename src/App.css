@@ -299,10 +299,12 @@
     right: 20px;
     transform: none;
     bottom: 20px;
+    display: none;
   }
 
   .logo-icon {
     width: 36px;
+    display: none;
   }
 }
 
