@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Transmission from "./pages/Transmission";
 import Transmission2 from "./pages/Transmission2";
@@ -12,19 +12,26 @@ import { useEffect, useRef } from "react";
 export default function App() {
   console.log("[SYS] App||ic4tion ini████ized...");
   const audioRef = useRef(null);
+  const location = useLocation();
+
+  // start audio on first user interaction
   useEffect(() => {
     const play = () => {
+      // don't start if we're on the live page
+      if (location.pathname === "/live") return;
       audioRef.current?.play();
       window.removeEventListener("click", play);
       window.removeEventListener("touchstart", play);
     };
     window.addEventListener("click", play);
-    window.addEventListener("touchstart", play); // needed for mobile
+    window.addEventListener("touchstart", play);
     return () => {
       window.removeEventListener("click", play);
       window.removeEventListener("touchstart", play);
     };
-  }, []);
+  }, [location.pathname]);
+
+  // web audio filter setup
   useEffect(() => {
     if (!audioRef.current) return;
 
@@ -42,6 +49,21 @@ export default function App() {
       filter.connect(ctx.destination);
     });
   }, []);
+
+  // pause on live page, resume elsewhere
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (location.pathname === "/live") {
+      audio.pause();
+    } else {
+      // only resume if it was already started (avoids autoplay errors)
+      if (!audio.paused) return;
+      audio.play().catch(() => {});
+    }
+  }, [location.pathname]);
+
   return (
     <>
       <audio ref={audioRef} autoPlay loop style={{ display: "none" }}>
