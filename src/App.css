@@ -293,6 +293,19 @@
   transition: opacity 0.2s;
 }
 
+@media (max-width: 430px) {
+  .logo-link {
+    left: auto;
+    right: 20px;
+    transform: none;
+    bottom: 20px;
+  }
+
+  .logo-icon {
+    width: 36px;
+  }
+}
+
 .logo-link:hover .logo-icon {
   opacity: 1;
 }
