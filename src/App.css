@@ -296,3 +296,103 @@
 .logo-link:hover .logo-icon {
   opacity: 1;
 }
+.live-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.live-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.show-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.show-row {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  padding: 10px 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: left;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.show-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.show-date {
+  white-space: nowrap;
+}
+
+.show-venue {
+  white-space: nowrap;
+}
+
+.show-dots {
+  flex: 1;
+  margin: 0 6px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+.show-toggle {
+  margin-left: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  transition:
+    transform 0.2s,
+    color 0.2s;
+}
+
+.show-row:hover .show-toggle {
+  color: #ffffff;
+}
+
+.show-toggle.open {
+  transform: rotate(45deg);
+}
+
+.show-details {
+  padding: 0 8px 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+}
+
+.show-details p {
+  margin: 0;
+}
+
+.show-details a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.show-details a:hover {
+  color: #ffffff;
+}

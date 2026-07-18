@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Transmission from "./pages/Transmission";
 import Transmission2 from "./pages/Transmission2";
 import Transmission3 from "./pages/Transmission3";
+import Live from "./pages/Live";
 
 import "./App.css";
 import shortwave from "./assets/shortwave.mp3";
@@ -51,6 +52,7 @@ export default function App() {
         <Route path="/transmission" element={<Transmission />} />
         <Route path="/transmission2" element={<Transmission2 />} />
         <Route path="/transmission3" element={<Transmission3 />} />
+        <Route path="/live" element={<Live />} />
       </Routes>
     </>
   );
