@@ -14,21 +14,21 @@ const shows = [
   },
   {
     date: "September 26",
-    venue: "NEAR ROCKIES STADIUM (TBA)",
+    venue: "Oktoberfest Denver",
     city: "Denver, CO",
     time: "TBA",
     detail: "Oktoberfest",
   },
   {
     date: "October 2",
-    venue: "Globe Hall",
+    venue: "Album Release Show @ Globe Hall",
     city: "Denver, CO",
     time: "7:00 PM",
-    detail: "ALBUM RELEASE SHOW ☄️",
+    detail: "Album Release Show @ Globe Hall ☄️",
   },
   {
     date: "October 3",
-    venue: "Baker Neighborhood",
+    venue: "Porchfest Denver",
     city: "Denver, CO",
     time: "TBA",
     detail: (
@@ -55,6 +55,8 @@ export default function Live() {
       <div className="live-overlay" />
 
       <div className="live-content">
+        <h1 className="live-heading">UPCOMING SHOWS</h1>
+
         <ul className="show-list">
           {shows.map((show, i) => (
             <li key={i} className="show-item">
