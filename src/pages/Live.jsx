@@ -6,34 +6,25 @@ import home from "../assets/home.png";
 
 const shows = [
   {
-    date: "July 26",
-    venue: "Bluecifers First Rodeo",
-    city: "Denver, CO (Baker neighborhood)",
-    time: "3:00 PM",
-    detail: "FREE House show. Address TBA (Check instagram for details).",
-  },
-  {
-    date: "Aug 2",
-    venue: "Oskar Blues Brewery",
-    city: "Denver, CO",
-    time: "TBA (Evening)",
-    detail:
-      "Supporting Geena Fontanella, Turning Jane, and Blue Mesa. Message us on Instagram for tickets.",
-  },
-  {
-    date: "Aug 15",
-    venue: "Meow Wolf Denver",
-    city: "Denver, CO",
-    time: "TBA (Evening)",
-    detail:
-      "Supporting HOLDFAST. for their album release show. Message us on Instagram for tickets.",
-  },
-  {
     date: "September 12",
     venue: "Joyride Brewing",
     city: "Denver, CO",
     time: "1:00 PM",
-    detail: "Oktoberfest celebration.",
+    detail: "Oktoberfest",
+  },
+  {
+    date: "September 26",
+    venue: "NEAR ROCKIES STADIUM (TBA)",
+    city: "Denver, CO",
+    time: "TBA",
+    detail: "Oktoberfest",
+  },
+  {
+    date: "October 2",
+    venue: "Globe Hall",
+    city: "Denver, CO",
+    time: "7:00 PM",
+    detail: "ALBUM RELEASE SHOW ☄️",
   },
 ];
 
