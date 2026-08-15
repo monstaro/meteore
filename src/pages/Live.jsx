@@ -26,6 +26,21 @@ const shows = [
     time: "7:00 PM",
     detail: "ALBUM RELEASE SHOW ☄️",
   },
+  {
+    date: "October 3",
+    venue: "Baker Neighborhood",
+    city: "Denver, CO",
+    time: "TBA",
+    detail: (
+      <a
+        href="https://www.eventbrite.com/e/denver-colorado-2024-10-03-tickets-798187646717"
+        target="_blank"
+        rel="noreferrer"
+      >
+        [ Denver Porchfest ]
+      </a>
+    ),
+  },
 ];
 
 export default function Live() {
