@@ -33,7 +33,7 @@ const shows = [
     time: "TBA",
     detail: (
       <a
-        href="https://www.eventbrite.com/e/denver-colorado-2024-10-03-tickets-798187646717"
+        href="https://www.denverporchfest.com/"
         target="_blank"
         rel="noreferrer"
       >
