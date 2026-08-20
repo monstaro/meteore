@@ -1,54 +1,35 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
+import PixelateFilter from "./PixelateFilter";
 
-const title = "éore";
+// Built once at module scope so the style objects are not re-created per render.
+const LINKS = [
+  { to: "/transmission", letter: "m", rotate: -10, label: "transmission 001" },
+  { to: "/transmission2", letter: "é", rotate: 10, label: "transmission 002" },
+  { to: "/transmission3", letter: "t", rotate: 2, label: "transmission 003" },
+].map((link) => ({
+  ...link,
+  style: { transform: `rotate(${link.rotate}deg)` },
+}));
 
-export default function FracturedMeteore() {
+const REST = Array.from("éore");
+
+function FracturedMeteore() {
   return (
     <div className="meteore-wrapper">
-      <svg style={{ display: "none" }}>
-        <filter id="pixelate2">
-          <feTurbulence baseFrequency="0.9" numOctaves="1" result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
-        </filter>
-      </svg>
+      <PixelateFilter id="pixelate2" />
       <h2 className="meteore">
-        <Link
-          to="/transmission"
-          style={{
-            color: "inherit",
-            textDecoration: "none",
-            transform: "rotate(-10deg)",
-          }}
-        >
-          m
-        </Link>
-        <Link
-          to="/transmission2"
-          style={{
-            color: "inherit",
-            textDecoration: "none",
-            transform: "rotate(10deg)",
-          }}
-        >
-          é
-        </Link>
-        <Link
-          to="/transmission3"
-          style={{
-            color: "inherit",
-            textDecoration: "none",
-            transform: "rotate(2deg)",
-          }}
-        >
-          t
-        </Link>
-        {title
-          .slice(0)
-          .split("")
-          .map((letter, i) => (
-            <span key={i}>{letter}</span>
-          ))}
+        {LINKS.map(({ to, letter, style, label }) => (
+          <Link key={to} to={to} style={style} aria-label={label}>
+            {letter}
+          </Link>
+        ))}
+        {REST.map((letter, i) => (
+          <span key={i}>{letter}</span>
+        ))}
       </h2>
     </div>
   );
 }
+
+export default memo(FracturedMeteore);

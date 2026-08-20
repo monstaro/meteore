@@ -1,8 +1,6 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import liveBg from "../assets/live-bg.jpg";
-import FracturedMeteore from "../components/FracturedMeteore";
-import { Link } from "react-router-dom";
-import home from "../assets/home.png";
+import PageLayout from "../components/PageLayout";
 
 const shows = [
   {
@@ -14,7 +12,7 @@ const shows = [
   },
   {
     date: "September 26",
-    venue: "Oktoberfest Denver",
+    venue: "Oktoberfest Denverg",
     city: "Denver, CO",
     time: "TBA",
     detail: "Oktoberfest",
@@ -31,68 +29,75 @@ const shows = [
     venue: "Porchfest Denver",
     city: "Denver, CO",
     time: "TBA",
-    detail: (
-      <a
-        href="https://www.denverporchfest.com/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        [ Denver Porchfest ]
-      </a>
-    ),
+    detail: "[ Denver Porchfest ]",
+    detailUrl: "https://www.denverporchfest.com/",
   },
 ];
 
 export default function Live() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggle = (i) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
+  const toggle = useCallback((i) => {
+    setOpenIndex((current) => (current === i ? null : i));
+  }, []);
 
   return (
-    <div className="hero" style={{ backgroundImage: `url(${liveBg})` }}>
-      <div className="live-overlay" />
-
+    <PageLayout background={liveBg} overlay>
       <div className="live-content">
         <h1 className="live-heading">UPCOMING SHOWS</h1>
 
         <ul className="show-list">
-          {shows.map((show, i) => (
-            <li key={i} className="show-item">
-              <button className="show-row" onClick={() => toggle(i)}>
-                <span className="show-date">{show.date}</span>
-                <span className="show-dots" />
-                <span className="show-venue">{show.venue}</span>
-                <span
-                  className={`show-toggle ${openIndex === i ? "open" : ""}`}
-                >
-                  +
-                </span>
-              </button>
+          {shows.map((show, i) => {
+            const isOpen = openIndex === i;
+            const panelId = `show-details-${i}`;
 
-              {openIndex === i && (
-                <div className="show-details">
-                  <p>
-                    {show.city} · {show.time}
-                  </p>
-                  <p>{show.detail}</p>
-                  {show.ticketUrl && (
-                    <a href={show.ticketUrl} target="_blank" rel="noreferrer">
-                      [ tickets ]
-                    </a>
-                  )}
-                </div>
-              )}
-            </li>
-          ))}
+            return (
+              <li key={`${show.date}-${show.venue}`} className="show-item">
+                <button
+                  type="button"
+                  className="show-row"
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                >
+                  <span className="show-date">{show.date}</span>
+                  <span className="show-dots" />
+                  <span className="show-venue">{show.venue}</span>
+                  <span className={`show-toggle ${isOpen ? "open" : ""}`}>
+                    +
+                  </span>
+                </button>
+
+                {isOpen && (
+                  <div className="show-details" id={panelId}>
+                    <p>
+                      {show.city} · {show.time}
+                    </p>
+                    <p>
+                      {show.detailUrl ? (
+                        <a
+                          href={show.detailUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {show.detail}
+                        </a>
+                      ) : (
+                        show.detail
+                      )}
+                    </p>
+                    {show.ticketUrl && (
+                      <a href={show.ticketUrl} target="_blank" rel="noreferrer">
+                        [ tickets ]
+                      </a>
+                    )}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
-
-      <FracturedMeteore />
-      <Link to="/" className="logo-link">
-        <img src={home} alt="home" className="logo-icon" />
-      </Link>
-    </div>
+    </PageLayout>
   );
 }

@@ -10,7 +10,14 @@
 
 .hero {
   height: 100vh;
+  /* dvh keeps the hero flush with the visible area on mobile browsers whose
+     toolbars collapse; browsers without dvh keep the vh value above. */
+  height: 100dvh;
   width: 100%;
+  max-width: 100%;
+  /* Positioned so the overlay and home link resolve against the hero itself
+     rather than the initial containing block. */
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,10 +30,16 @@
 }
 
 .fractured-title {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-weight: 420;
   display: flex;
+  /* Fixed 58px gaps push the title past ~1300px wide; clamp keeps the
+     wide-viewport look while letting narrower screens fit. */
   gap: 58px;
+  gap: clamp(6px, 4.4vw, 58px);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
   opacity: 89%;
   filter: url(#pixelate);
   overflow: visible;
@@ -136,11 +149,15 @@
 
 .meteore-wrapper {
   animation: flicker 3.2s infinite;
+  max-width: 100%;
 }
 
 .meteore {
   display: flex;
-  font-family: "JetBrains Mono", monospace;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  font-family: var(--font-mono);
   font-weight: 420;
   filter: url(#pixelate2);
   font-size: 1.2rem;
@@ -148,15 +165,37 @@
   padding-top: 20px;
 }
 
+.meteore a {
+  color: inherit;
+  text-decoration: none;
+  /* Grows the touch target vertically without changing the layout box. */
+  padding: 10px 0;
+  margin: -10px 0;
+  touch-action: manipulation;
+}
+
+.meteore a:focus-visible {
+  outline: 1px solid var(--fg-strong);
+  outline-offset: 2px;
+}
+
 .transmission-text {
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--fg-soft);
   line-height: 2;
   max-width: 500px;
+  max-width: min(500px, 90vw);
   max-height: 70vh;
   overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding-right: 10px;
+  /* Read by the mobile scroll rail below; also the useScrollProgress default. */
+  --scroll-pct: 0;
+  /* Firefox scrollbar styling (the ::-webkit- rules below cover Chrome/Safari). */
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 .transmission-text::-webkit-scrollbar {
@@ -165,19 +204,20 @@
 }
 
 .transmission-text::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--scrollbar-track);
 }
 
 .transmission-text::-webkit-scrollbar-thumb {
-  background: #013d3f;
+  background: var(--scrollbar-thumb);
   border-radius: 0;
   border: none;
   box-shadow: none;
 }
 
 .transmission-text::-webkit-scrollbar-thumb:hover {
-  background: #013d3f;
+  background: var(--scrollbar-thumb);
 }
+
 @media (max-width: 768px) {
   .fractured-title {
     font-size: 0.95rem;
@@ -268,7 +308,6 @@
     position: relative;
     -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-    --scroll-pct: 0;
     background-image: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.6) calc(var(--scroll-pct) * 100%),
@@ -285,6 +324,7 @@
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
+  touch-action: manipulation;
 }
 
 .logo-icon {
@@ -308,11 +348,18 @@
   }
 }
 
-.logo-link:hover .logo-icon {
-  opacity: 1;
+@media (hover: hover) {
+  .logo-link:hover .logo-icon {
+    opacity: 1;
+  }
 }
+
 .live-overlay {
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   pointer-events: none;
@@ -323,6 +370,7 @@
   z-index: 1;
   width: 100%;
   max-width: 500px;
+  max-width: min(500px, 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -331,19 +379,23 @@
 .live-heading {
   margin: 0 0 14px;
   padding: 0 8px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.18em;
-  color: #ffffff;
+  color: var(--fg-strong);
 }
 
 @media (max-width: 430px) {
   .live-overlay {
+    /* Fixed so the dim layer covers the viewport, not just the hero box.
+       Sized with inset rather than 100vw/100vh to avoid scrollbar overflow. */
     position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
   }
 }
 
@@ -352,7 +404,7 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
 }
 
 .show-row {
@@ -362,33 +414,52 @@
   padding: 10px 8px;
   background: none;
   border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
   cursor: pointer;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--fg-soft);
   text-align: left;
+  /* Removes the 300ms tap delay on touch devices. */
+  touch-action: manipulation;
   transition:
     background 0.15s,
     color 0.15s;
 }
 
-.show-row:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
+.show-row:focus-visible {
+  outline: 1px solid var(--fg-strong);
+  outline-offset: -1px;
+}
+
+@media (hover: hover) {
+  .show-row:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--fg-strong);
+  }
+
+  .show-row:hover .show-toggle {
+    color: var(--fg-strong);
+  }
 }
 
 .show-date {
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .show-venue {
   white-space: nowrap;
+  min-width: 0;
 }
 
 .show-dots {
   flex: 1;
+  min-width: 10px;
   margin: 0 6px;
-  border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+  border-bottom: 1px dotted var(--rule);
   transform: translateY(-3px);
 }
 
@@ -400,20 +471,18 @@
     color 0.2s;
 }
 
-.show-row:hover .show-toggle {
-  color: #ffffff;
-}
-
 .show-toggle.open {
   transform: rotate(45deg);
 }
 
 .show-details {
   padding: 0 8px 14px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--fg-muted);
   line-height: 1.8;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .show-details p {
@@ -428,6 +497,38 @@
   margin-top: 6px;
 }
 
-.show-details a:hover {
-  color: #ffffff;
+@media (hover: hover) {
+  .show-details a:hover {
+    color: var(--fg-strong);
+  }
+}
+
+/* Long venue names would otherwise push the row (and the page) sideways. */
+@media (max-width: 520px) {
+  .live-content {
+    padding: 0 8px;
+  }
+
+  .show-row {
+    font-size: 0.8rem;
+  }
+
+  .show-venue {
+    white-space: normal;
+    text-align: right;
+  }
+}
+
+/* Respect users who ask their OS to reduce motion: the flicker is decorative. */
+@media (prefers-reduced-motion: reduce) {
+  .flicker-wrapper,
+  .meteore-wrapper {
+    animation: none;
+  }
+
+  .show-row,
+  .show-toggle,
+  .logo-icon {
+    transition: none;
+  }
 }

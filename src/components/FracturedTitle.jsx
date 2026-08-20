@@ -1,16 +1,15 @@
-const title = "hellocentral";
+import { memo } from "react";
+import PixelateFilter from "./PixelateFilter";
 
-export default function FracturedTitle() {
+// Split once at module scope instead of on every render.
+const LETTERS = Array.from("hellocentral");
+
+function FracturedTitle() {
   return (
     <div className="flicker-wrapper">
-      <svg style={{ display: "none" }}>
-        <filter id="pixelate">
-          <feTurbulence baseFrequency="0.9" numOctaves="1" result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
-        </filter>
-      </svg>
+      <PixelateFilter id="pixelate" />
       <h1 className="fractured-title">
-        {title.split("").map((letter, i) => (
+        {LETTERS.map((letter, i) => (
           <span key={i} className={`letter-${i}`}>
             {letter}
           </span>
@@ -19,3 +18,5 @@ export default function FracturedTitle() {
     </div>
   );
 }
+
+export default memo(FracturedTitle);
