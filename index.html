@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/html-5.png" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
+    <!-- No viewport-fit=cover: it extends the layout viewport under the iOS
+         notch and home indicator, which clips the hero top and bottom. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
     <title>hellocentral</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

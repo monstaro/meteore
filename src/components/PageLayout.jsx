@@ -4,12 +4,17 @@ import HomeLink from "./HomeLink";
 
 /**
  * Full-bleed hero shell shared by every route: background image, optional
- * dimming overlay, page content, the météore nav and the home link.
+ * dimming overlay, page content, the météore nav and a footer.
+ *
+ * The footer defaults to the plain home link; pass `footer` to replace it
+ * (the transmission pages swap in prev/home/next).
  */
 export default function PageLayout({
   background,
   overlay = false,
   showHomeLink = true,
+  footer,
+  className = "",
   children,
 }) {
   const style = useMemo(
@@ -18,11 +23,11 @@ export default function PageLayout({
   );
 
   return (
-    <div className="hero" style={style}>
+    <div className={className ? `hero ${className}` : "hero"} style={style}>
       {overlay && <div className="live-overlay" />}
       {children}
       <FracturedMeteore />
-      {showHomeLink && <HomeLink />}
+      {footer ?? (showHomeLink && <HomeLink />)}
     </div>
   );
 }

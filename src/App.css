@@ -9,10 +9,10 @@
 }
 
 .hero {
-  height: 100vh;
-  /* dvh keeps the hero flush with the visible area on mobile browsers whose
-     toolbars collapse; browsers without dvh keep the vh value above. */
-  height: 100dvh;
+  /* min-height rather than height: the vh paddings below are sized against the
+     large viewport, so a fixed height lets tall content get clipped by the
+     `overflow: hidden` in the mobile block. This way the box grows instead. */
+  min-height: 100vh;
   width: 100%;
   max-width: 100%;
   /* Positioned so the overlay and home link resolve against the hero itself
@@ -31,12 +31,15 @@
 
 .fractured-title {
   font-family: var(--font-mono);
-  font-weight: 420;
+  font-size: 3.2rem;
   display: flex;
-  /* Fixed 58px gaps push the title past ~1300px wide; clamp keeps the
-     wide-viewport look while letting narrower screens fit. */
+  /* The letters + their margins are a fixed 609px at this font-size, plus 11
+     gaps, so a flat 58px gap needs 1247px and wraps on anything smaller. This
+     holds 58px down to ~1264px, then narrows the gap linearly so the title
+     stays on one line. Retune if font-size changes: measure the no-gap width
+     W, then gap = (viewport - W - 16) / 11 at the narrow end. */
   gap: 58px;
-  gap: clamp(6px, 4.4vw, 58px);
+  gap: clamp(6px, calc(9.1vw - 57px), 58px);
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
@@ -158,25 +161,193 @@
   justify-content: center;
   max-width: 100%;
   font-family: var(--font-mono);
-  font-weight: 420;
   filter: url(#pixelate2);
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   letter-spacing: 40px;
   padding-top: 20px;
 }
 
-.meteore a {
-  color: inherit;
-  text-decoration: none;
-  /* Grows the touch target vertically without changing the layout box. */
-  padding: 10px 0;
-  margin: -10px 0;
-  touch-action: manipulation;
+/* A long entry (003) plus 20vh/15vh padding and the météore row adds up to
+   more than 100vh. With only min-height the hero grew to fit and
+   background-size: cover scaled the image up with it, so transmission heroes
+   get a definite height and the text box absorbs the difference below. */
+.hero--transmission {
+  height: 100vh;
 }
 
-.meteore a:focus-visible {
+/* ---------- transmission footer: prev / home / next ---------- */
+
+.transmission-nav {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 5vw, 36px);
+}
+
+.nav-step {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 2px;
+  touch-action: manipulation;
+  transition:
+    opacity 0.18s,
+    transform 0.18s;
+}
+
+.nav-step:focus-visible {
   outline: 1px solid var(--fg-strong);
   outline-offset: 2px;
+}
+
+/* No entry that way: keep the arrow in place so home stays centred. */
+.nav-step.is-spent {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.nav-icon {
+  display: block;
+  width: clamp(48px, 10vw, 68px);
+  height: auto;
+  image-rendering: -moz-crisp-edges; /* Firefox < 93 */
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* arrow.png points left; the forward step reuses it mirrored. */
+.nav-icon--next {
+  transform: scaleX(-1);
+}
+
+/* Corner mute toggle. Out of flow, so it sits in any hero without touching
+   the flex layout. */
+.sound-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  padding: 8px;
+  background: none;
+  border: 0;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    opacity 0.18s,
+    transform 0.18s;
+}
+
+.sound-toggle .nav-icon {
+  width: clamp(38px, 8vw, 52px);
+}
+
+.sound-toggle[aria-pressed="true"] .nav-icon {
+  opacity: 0.4;
+}
+
+.sound-toggle:focus-visible {
+  outline: 1px solid var(--fg-strong);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .sound-toggle:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.nav-icon--home {
+  width: clamp(56px, 12vw, 80px);
+}
+
+@media (hover: hover) {
+  .nav-step:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* ---------- console: icon grid in the centre of the hero ---------- */
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(8px, 4vw, 40px);
+  justify-items: center;
+  width: 100%;
+  max-width: 460px;
+  padding: 0 16px;
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  background: none;
+  border: 0;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  color: inherit;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    transform 0.18s,
+    opacity 0.18s;
+}
+
+.icon-item:focus-visible {
+  outline: 1px solid var(--fg-strong);
+  outline-offset: 2px;
+}
+
+.icon-art {
+  display: block;
+  width: clamp(56px, 15vw, 88px);
+  height: auto;
+  /* Win95-era art: a 540px source shown at ~80px. Keep the blocks hard-edged
+     instead of letting the browser bilinear-smooth them into mush. */
+  image-rendering: -moz-crisp-edges; /* Firefox < 93 */
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+.icon-label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+  transition: color 0.18s;
+}
+
+/* The mute toggle reads as switched off. */
+.icon-item[aria-pressed="true"] .icon-art {
+  opacity: 0.4;
+}
+
+.icon-item:active {
+  transform: translateY(0);
+}
+
+@media (hover: hover) {
+  .icon-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .icon-item:hover .icon-label {
+    color: var(--fg-strong);
+  }
 }
 
 .transmission-text {
@@ -196,6 +367,56 @@
   /* Firefox scrollbar styling (the ::-webkit- rules below cover Chrome/Safari). */
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Flex items refuse to shrink below their content by default; min-height: 0
+   lets the text box give up height to the paddings and the météore instead of
+   pushing the hero taller, and it just scrolls internally. */
+.hero--transmission .transmission-text {
+  min-height: 0;
+}
+
+/* The flicker sits on the paragraphs rather than the box, so it does not drag
+   the plate imaging along with it - an animated opacity on a container applies
+   to its whole subtree and a child cannot opt out. */
+.transmission-text p {
+  animation: flicker 0.5s infinite;
+}
+
+/* Bottom fade, so a cut-off line reads as "there is more" instead of
+   "cropped". Only while the box can actually scroll, and the black stop is
+   driven toward 100% by --scroll-pct so the fade lifts as you reach the end
+   and the last line is fully readable. */
+.transmission-text[data-scrollable="true"] {
+  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(78% + var(--scroll-pct) * 22%),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(78% + var(--scroll-pct) * 22%),
+    transparent 100%
+  );
+}
+
+/* One blank line between paragraphs, matching the <br><br> spacing the entries
+   used to hard-code. 2em == one line box at this font-size and line-height. */
+.transmission-text p + p {
+  margin-top: 2em;
+}
+
+/* Plate imaging. Scales to the column and keeps its own aspect ratio. No
+   pixelated rendering here - these are photographic and being scaled down,
+   unlike the Win95 icons. */
+.transmission-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 2em;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .transmission-text::-webkit-scrollbar {
@@ -222,6 +443,9 @@
   .fractured-title {
     font-size: 0.95rem;
     gap: 20px;
+    /* Displacement is measured in px, so the small type needs the gentler
+       filter instance - see PixelateFilter.jsx. */
+    filter: url(#pixelate-sm);
   }
 
   .letter-0 {
@@ -279,6 +503,12 @@
     transform: translateX(0px) translateY(-60px);
   }
 
+  /* On the transmission pages the -60px lift pulls the météore up on top of
+     the scrolling text, so it stays put there and keeps its own row. */
+  .hero--transmission .meteore {
+    transform: none;
+  }
+
   .hero {
     overflow: hidden;
     padding-top: 15vh;
@@ -306,8 +536,12 @@
     max-height: 58vh;
     max-width: 80vw;
     position: relative;
-    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    /* iOS Safari ignores the ::-webkit-scrollbar styling above and draws its
+       own overlay bar on top of the custom rail below, so hide the native one
+       here and let the gradient rail be the only scroll indicator. */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* (the bottom fade now lives on the base rule, at every width) */
     background-image: linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.6) calc(var(--scroll-pct) * 100%),
@@ -316,6 +550,12 @@
     background-size: 3px 100%;
     background-repeat: no-repeat;
     background-position: right;
+  }
+
+  .transmission-text::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 }
 
@@ -522,13 +762,24 @@
 /* Respect users who ask their OS to reduce motion: the flicker is decorative. */
 @media (prefers-reduced-motion: reduce) {
   .flicker-wrapper,
-  .meteore-wrapper {
+  .meteore-wrapper,
+  .transmission-text p {
     animation: none;
   }
 
   .show-row,
   .show-toggle,
-  .logo-icon {
+  .logo-icon,
+  .icon-item,
+  .icon-label,
+  .nav-step,
+  .sound-toggle {
     transition: none;
+  }
+
+  .icon-item:hover,
+  .nav-step:hover,
+  .sound-toggle:hover {
+    transform: none;
   }
 }

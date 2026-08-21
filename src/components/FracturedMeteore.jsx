@@ -1,31 +1,36 @@
 import { memo } from "react";
-import { Link } from "react-router-dom";
 import PixelateFilter from "./PixelateFilter";
 
-// Built once at module scope so the style objects are not re-created per render.
-const LINKS = [
-  { to: "/transmission", letter: "m", rotate: -10, label: "transmission 001" },
-  { to: "/transmission2", letter: "é", rotate: 10, label: "transmission 002" },
-  { to: "/transmission3", letter: "t", rotate: 2, label: "transmission 003" },
-].map((link) => ({
-  ...link,
-  style: { transform: `rotate(${link.rotate}deg)` },
-}));
+// The first three letters keep their hand-tuned tilt from when they were the
+// transmission links; navigation now lives in the icon grid and the
+// transmission footer, so these are plain type.
+const ROTATIONS = [-10, 10, 2];
 
-const REST = Array.from("éore");
+// Built once at module scope so the style objects are not re-created per render.
+const LETTERS = Array.from("météore").map((letter, i) => ({
+  letter,
+  style:
+    ROTATIONS[i] === undefined
+      ? undefined
+      : { transform: `rotate(${ROTATIONS[i]}deg)` },
+}));
 
 function FracturedMeteore() {
   return (
     <div className="meteore-wrapper">
-      <PixelateFilter id="pixelate2" />
+      {/* 2.2rem type: scale ~0.2x and split ~0.06x of the font-size keeps the
+          ghosting proportional to the 3.2rem title's. */}
+      <PixelateFilter
+        id="pixelate2"
+        scale={7}
+        split={2}
+        baseFrequency="0.015 0.7"
+      />
       <h2 className="meteore">
-        {LINKS.map(({ to, letter, style, label }) => (
-          <Link key={to} to={to} style={style} aria-label={label}>
+        {LETTERS.map(({ letter, style }, i) => (
+          <span key={i} style={style}>
             {letter}
-          </Link>
-        ))}
-        {REST.map((letter, i) => (
-          <span key={i}>{letter}</span>
+          </span>
         ))}
       </h2>
     </div>
