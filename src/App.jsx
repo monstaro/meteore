@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import TransmissionPage from "./components/TransmissionPage";
 import { transmissions } from "./data/transmissions";
 import { SoundContext } from "./context/sound";
+import usePageviews from "./hooks/usePageviews";
 
 import "./App.css";
 import shortwave from "./assets/shortwave.mp3";
@@ -30,6 +31,9 @@ export default function App() {
 
   const toggleMute = useCallback(() => setMuted((m) => !m), []);
   const sound = useMemo(() => ({ muted, toggleMute }), [muted, toggleMute]);
+
+  // Router navigations are invisible to GoatCounter's count.js on their own.
+  usePageviews();
 
   useEffect(() => {
     console.log("[SYS] App||ic4tion ini████ized...");
