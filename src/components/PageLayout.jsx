@@ -1,10 +1,12 @@
 import { useMemo } from "react";
 import FracturedMeteore from "./FracturedMeteore";
 import HomeLink from "./HomeLink";
+import InfoLink from "./InfoLink";
 
 /**
  * Full-bleed hero shell shared by every route: background image, optional
- * dimming overlay, page content, the météore nav and a footer.
+ * dimming overlay, page content, the météore nav, a footer and the corner
+ * info link.
  *
  * The footer defaults to the plain home link; pass `footer` to replace it
  * (the transmission pages swap in prev/home/next).
@@ -28,6 +30,8 @@ export default function PageLayout({
       {children}
       <FracturedMeteore />
       {footer ?? (showHomeLink && <HomeLink />)}
+      {/* Last, so it paints above the live page's overlay. */}
+      <InfoLink />
     </div>
   );
 }

@@ -224,12 +224,43 @@
   transform: scaleX(-1);
 }
 
+/* Corner link out to the linktree, on every page. Top-left, so it never
+   collides with the mute toggle top-right. z-index clears the live page's
+   overlay and its z-index: 1 content. */
+.info-link {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: flex;
+  padding: 8px;
+  border-radius: 2px;
+  touch-action: manipulation;
+  transition: transform 0.18s;
+}
+
+.info-link .nav-icon {
+  width: clamp(34px, 7vw, 46px);
+}
+
+.info-link:focus-visible {
+  outline: 1px solid var(--fg-strong);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .info-link:hover {
+    transform: translateY(-2px);
+  }
+}
+
 /* Corner mute toggle. Out of flow, so it sits in any hero without touching
    the flex layout. */
 .sound-toggle {
   position: absolute;
   top: 16px;
   right: 16px;
+  z-index: 2;
   display: flex;
   padding: 8px;
   background: none;
@@ -773,13 +804,15 @@
   .icon-item,
   .icon-label,
   .nav-step,
-  .sound-toggle {
+  .sound-toggle,
+  .info-link {
     transition: none;
   }
 
   .icon-item:hover,
   .nav-step:hover,
-  .sound-toggle:hover {
+  .sound-toggle:hover,
+  .info-link:hover {
     transform: none;
   }
 }
