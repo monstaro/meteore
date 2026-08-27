@@ -24,7 +24,7 @@ const shows = [
     time: "7:00 PM",
     detail: "[ Purchase Tickets - Album Release Show @ Globe Hall ☄️ ]",
     detailUrl:
-      "https://globehall.com/event/hellocentral-w-blankslate-overtime-winner-satellite-friend/globe-hall/denver-colorado/",
+      "https://www.etix.com/ticket/p/36249744/hellocentral-wblankslateovertime-winner-satellite-friend-denver-globe-hall?partner_id=100",
   },
   {
     date: "October 3",
