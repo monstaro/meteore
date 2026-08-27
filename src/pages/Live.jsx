@@ -12,7 +12,7 @@ const shows = [
   },
   {
     date: "September 26",
-    venue: "Oktoberfest Denverg",
+    venue: "Oktoberfest Denver",
     city: "Denver, CO",
     time: "TBA",
     detail: "Oktoberfest",
@@ -22,7 +22,9 @@ const shows = [
     venue: "Album Release Show @ Globe Hall",
     city: "Denver, CO",
     time: "7:00 PM",
-    detail: "Album Release Show @ Globe Hall ☄️",
+    detail: "[ Purchase Tickets - Album Release Show @ Globe Hall ☄️ ]",
+    detailUrl:
+      "https://globehall.com/event/hellocentral-w-blankslate-overtime-winner-satellite-friend/globe-hall/denver-colorado/",
   },
   {
     date: "October 3",

@@ -39,7 +39,7 @@ export const transmissions = [
   },
   {
     path: "/transmission4",
-    heading: "entry 004 — july 20 2026",
+    heading: "entry 004 — august 20 2026",
     body: [
       "we have our first imaging of D9. the object is a massive and metallic solid body. infrared imaging confirms a pulsating multi-colored glow.",
     ],
@@ -56,6 +56,15 @@ export const transmissions = [
         width: 959,
         height: 581,
       },
+    ],
+  },
+  {
+    path: "/transmission5",
+    heading: "entry 005 — august 27 2026",
+    body: [
+      "we have a date of impact. october 3, 2026. D9 is now visible to the naked eye and is a bright point of light in the night sky. impact is imminent. the end is upon us, and word is getting out. we are kaput. i cant sleep.",
+      "all i can think of is when life used to be fun. our glowing optimism that outshined the sun. sleeping beneath the stars on the coast, listening to the waves crash down in an endless cascade.",
+      "now all i can do is try to find some peace of mind in all of this finality...",
     ],
   },
 ];
