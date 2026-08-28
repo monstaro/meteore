@@ -23,8 +23,8 @@ export const transmissions = [
     path: "/transmission2",
     heading: "entry 002 — feb 10 2026",
     body: [
-      "yesterday, a continuous, non-terrestrial 11-minute signal was intercepted by the WIRA observatory. the source is currently positioned at roughly 22.40 AU.",
-      "spectral analysis indicates a high-density metallic core, suggesting a massive anomalous body. the doppler profile suggests a direct intercept course with inner solar system. the object has no visual confirmation, but radio signature is certain.",
+      "yesterday, a non-terrestrial signal was intercepted at the WIRA observatory.",
+      "spectral analysis indicates a high-density metallic core. its doppler profile suggests a direct intercept course with inner solar system. .",
       "the object's velocity and trajectory indicate a potential deep-impact event timeframe of less than 365 days. further communications will remain on this secure NASA intranet channel.",
     ],
   },
