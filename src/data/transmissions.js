@@ -32,9 +32,9 @@ export const transmissions = [
     path: "/transmission3",
     heading: "entry 003 — july 14 2026",
     body: [
-      "after 6 months of intense observation, our team has been able to confirm the object - dubbed DRACONIS 9 or D9 - is on a clear trajectory towards earth. efforts are underway to divert its path using an ion beam or through surface ablation however the sheer size of D9 has cast serious doubts on our ability to make an impact. we estimate only have months left until impact.",
-      "some are more hopeful than others but it's coin toss. we are feeling more dread than hope. many of us cannot leave the observatory due to our knowledge of the sensitive topic. ironically, there is still so much we do not know. we do not fully understand what d9 is made of. spectral analysis return inconclusive results and it is pulsating with a multi-colored glow on infrared radar.",
-      "let the record show we estimate impact sometime during EARLY OCTOBER 2026---during draconoid meteor shower. i do not know if people will know what's coming by then but we are instructed to keep all intelligence confidential.",
+      "after 6 months of intense observation, our team has been able to confirm the object - dubbed DRACONIS 9 or D9 - is on a clear trajectory towards earth. efforts are underway to divert its path however the size of D9 has cast doubts on our ability to make an impact. we estimate only months left until impact.",
+      "some are more hopeful than others. many of us cannot leave the observatory for what we know. but there is still so much we dont know. we do not fully understand what d9 is made of. infrared radar shows it is pulsating with a multi-colored glow.",
+      "we estimate impact sometime during EARLY OCTOBER 2026---during the draconoid meteor shower. we are one of the few who know, but word will get out soon.",
     ],
   },
   {
