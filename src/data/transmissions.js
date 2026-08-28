@@ -62,9 +62,7 @@ export const transmissions = [
     path: "/transmission5",
     heading: "entry 005 — august 27 2026",
     body: [
-      "we have a date of impact. october 3, 2026. D9 is now visible to the naked eye and is a bright point of light in the night sky. impact is imminent. the end is upon us, and word is getting out. we are kaput. i cant sleep.",
-      "all i can think of is when life used to be fun. our glowing optimism that outshined the sun. sleeping beneath the stars on the coast, listening to the waves crash down in an endless cascade.",
-      "now all i can do is try to find some peace of mind in all of this finality...",
+      "impact is imminent. october 3, 2026. D9 is now visible to the naked eye. efforts to eliminate it have failed, and word is getting out. we are doomed and i cant sleep",
     ],
   },
 ];
