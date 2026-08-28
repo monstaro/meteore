@@ -23,7 +23,7 @@ export const transmissions = [
     path: "/transmission2",
     heading: "entry 002 — feb 10 2026",
     body: [
-      "yesterday, a non-terrestrial signal was intercepted at the WIRA observatory.",
+      "yesterday, an extraterrestrial signal was intercepted at the WIRA observatory.",
       "spectral analysis indicates a high-density metallic core. its doppler profile suggests a direct intercept course with inner solar system. .",
       "the object's velocity and trajectory indicate a potential deep-impact event timeframe of less than 365 days. further communications will remain on this secure NASA intranet channel.",
     ],
