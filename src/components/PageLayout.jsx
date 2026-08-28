@@ -20,8 +20,14 @@ export default function PageLayout({
   children,
 }) {
   const style = useMemo(
-    () => ({ backgroundImage: `url(${background})` }),
-    [background],
+    () => ({
+      // Darkens the background image everywhere except the live page, which
+      // already dims itself via its own `.live-overlay` child.
+      backgroundImage: overlay
+        ? `url(${background})`
+        : `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${background})`,
+    }),
+    [background, overlay],
   );
 
   return (
